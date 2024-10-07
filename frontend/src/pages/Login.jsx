@@ -36,10 +36,13 @@ navigate('/');
 
     }
   }
+  const handleNewAccount = () => {
+    navigate('/signup')
+  }
   return (
     <div className='h-screen flex flex-col justify-center items-center'>
 
-    <div className=' p-4 border  shadow-md border-black'>
+    <div className=' p-4 border  shadow-md border-black flex flex-col gap-5'>
       {/* {isLoggedIn ? <p>welcome user</p>:<p>please log in</p>} */}
       <h1 className='text-4xl m-5'>Login Form</h1>
       <form ref={formRef} onSubmit={submitHandler} className='flex flex-col gap-5'>
@@ -53,6 +56,8 @@ navigate('/');
         </div>
         <Button value='Submit' type='submit' className='text-white'> Submit</Button>
       </form>
+      <h1 className='text-center'>OR</h1>
+      <Button onClick={handleNewAccount} className='w-full'> Create A New Account </Button>
     </div>
   </div>
   )
