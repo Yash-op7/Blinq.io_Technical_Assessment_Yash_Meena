@@ -24,7 +24,7 @@ const Home = () => {
 
   return (
     <div>
-      <h1>
+      <h1 className='text-5xl text-center m-10'>
         Welcome {user.name}
       </h1>
       {
