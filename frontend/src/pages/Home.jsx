@@ -32,9 +32,9 @@ const Home = () => {
     try {
       const response = await axios.post('/api/tasks/new', { title: newTaskTitle, content: newTaskContent }, { withCredentials: true });
       console.log('New Task Created:', response.data);
-      setNewTaskTitle(''); // Clear input after submission
+      setNewTaskTitle(''); 
       setNewTaskContent('');
-      setTriggerRefetch(prev => !prev); // Refetch tasks to include the new one
+      setTriggerRefetch(prev => !prev); 
     } catch (error) {
       if (error.response) {
         console.error('Error response:', error.response.data);
