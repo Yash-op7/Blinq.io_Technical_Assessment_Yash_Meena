@@ -7,7 +7,7 @@ import Task from '../components/Task';
 const Home = () => {
   const {user} = useAuthContext();
   const [tasks, setTasks] = useState();
-
+  const [triggerRefetch, setTriggerRefetch] = useState(false);
 
 
   useEffect( () => {
@@ -20,7 +20,7 @@ const Home = () => {
       }
     }
      fetchAllTasks();
-  },[])
+  },[triggerRefetch])
 
   return (
     <div>
@@ -29,7 +29,7 @@ const Home = () => {
       </h1>
       {
         tasks?.map((task, idx) => {
-          return <Task key={idx} data={task} />
+          return <Task key={idx} setTriggerRefetch={setTriggerRefetch} data={task} />
         } )
       }
     </div>
