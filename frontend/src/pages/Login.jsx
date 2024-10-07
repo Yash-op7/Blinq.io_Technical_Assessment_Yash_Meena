@@ -18,7 +18,7 @@ const Login = () => {
         email:formData.get('email'),
         password: formData.get('password')
       }
-      const response = await axios.post('/auth/login', user);
+      const response = await axios.post('/auth/login', user, { withCredentials: true });
       setUser(response.data.user);
       setIsLoggedIn(true);
 navigate('/');

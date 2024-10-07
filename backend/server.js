@@ -24,7 +24,10 @@ const PORT = process.env.PORT || 4000;
 app.use(express.json());
 app.use(helmet());
 app.use(cookieParser());
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5173', // Replace with your frontend origin
+  credentials: true, // Allow credentials (cookies)
+}));
 
 /* IF TIME PERMITS, CREATE A OUTPUT WRITE STREAM FOR HTTP REQUESTS LOG */
 // app.use(morgan('combined', {stream: writeLogStream}))
