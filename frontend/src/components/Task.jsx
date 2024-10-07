@@ -4,12 +4,12 @@ import axios from "../api/axios";
 
 const Task = ({ data, setTriggerRefetch }) => {
     const [isEditing, setIsEditing] = useState(false);
-    const [updatedTitle, setUpdatedTitle] = useState(data.title);
+const [updatedTitle, setUpdatedTitle] = useState(data.title);
     const [updatedContent, setUpdatedContent] = useState(data.content);
 
     const handleUpdate = async () => {
         try {
-            const response = await axios.put(
+            const response = await axios.patch(
                 `/api/tasks/${data._id}`,
                 { title: updatedTitle, content: updatedContent },
                 { withCredentials: true }
