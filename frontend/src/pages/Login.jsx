@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const formRef = useRef();
   const navigate= useNavigate();
-  const {setIsLoggedIn, setUser} = useAuthContext();
+  const {setIsLoggedIn, setUser, isLoggedIn} = useAuthContext();
   const submitHandler =async(e) => {
     e.preventDefault();
     const formData= new FormData(formRef.current);
@@ -37,20 +37,24 @@ navigate('/');
     }
   }
   return (
-    <div className='flex flex-col p-5 border justify-center items-center'>
-      <h1 className='relative mb-4'>Login Form</h1>
-      <form ref={formRef} onSubmit={submitHandler} className='flex flex-col justify-center items-center gap-5'>
-        <div className='m-1 flex flex-row justify-end gap-5 items-center'>
-          <label>Email</label>
-          <input className='p-1 border border-gray-300' type='text' name='email' placeholder='Enter Email' />
+    <div className='h-screen flex flex-col justify-center items-center'>
+
+    <div className=' p-4 border  shadow-md border-black'>
+      {/* {isLoggedIn ? <p>welcome user</p>:<p>please log in</p>} */}
+      <h1 className='text-4xl m-5'>Login Form</h1>
+      <form ref={formRef} onSubmit={submitHandler} className='flex flex-col gap-5'>
+        <div className='flex gap-5 justify-between items-center'>
+          <label htmlFor='email'>Email</label>
+          <input className='border border-gray-300 p-1 rounded-md drop-shadow' type='email' id='email' name='email' placeholder='Enter Email'/>
         </div>
-        <div className='m-1 flex flex-row justify-evenly gap-5 items-center'>
-          <label>Password</label>
-          <input className='p-1 border border-gray-300' type='password' name='password' placeholder='Enter Password' />
+        <div className='flex gap-5 justify-between items-center'>
+          <label htmlFor='password'>Password</label>
+          <input className='border border-gray-300 p-1 rounded-md' type='password' id='password' name='password' placeholder='Enter Password'/>
         </div>
-        <Button type='submit'>Submit</Button>
+        <Button value='Submit' type='submit' className='text-white'> Submit</Button>
       </form>
     </div>
+  </div>
   )
 }
 
