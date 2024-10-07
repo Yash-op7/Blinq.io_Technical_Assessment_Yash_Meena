@@ -2,10 +2,11 @@ import React from 'react'
 import { useAuthContext } from '../context/useAuthContext'
 import { Button } from "@/components/ui/button";
 import axios from '../api/axios';
+import { useNavigate } from 'react-router-dom';
 
 
 const Navbar = () => {
-    const {isLoggedIn, setIsLoggedIn} = useAuthContext();
+        const {isLoggedIn, setIsLoggedIn} = useAuthContext();
     const handleLogout = async() => {
         try {
             await axios.post('/auth/logout', {}, {withCredentials:true});
@@ -25,10 +26,13 @@ const Navbar = () => {
 
         }
     }
+    const handleLogin = async() => {
+        setIsLoggedIn(false);
+    }
   return (
     <div className='bg-black h-1/5 fixed top-0 flex flex-row justify-around items-center w-screen'>
         <h1 className='text-3xl text-white'>Task CRUD App</h1>
-        {isLoggedIn ? <Button onClick={handleLogout}>Logout</Button>:<Button>Login</Button>}
+        {isLoggedIn ? <Button onClick={handleLogout}>Logout</Button>:<Button onClick={handleLogin}>Login</Button>}
     </div>
   )
 }
