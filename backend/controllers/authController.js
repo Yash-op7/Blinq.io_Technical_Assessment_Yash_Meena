@@ -65,7 +65,6 @@ const login = async (req, res) => {
   const userObj = {
     ...req.user,
   };
-  console.log('inside login',req.user)
   try {
     token = jwt.sign(userObj, process.env.TOKEN_SECRET, { expiresIn: "8h" });
     return res
@@ -75,6 +74,7 @@ const login = async (req, res) => {
       .status(200)
       .json({
         message: "Successfully signed in",
+        user: req.user
       });
   } catch (error) {
     return res.status(500).json({
