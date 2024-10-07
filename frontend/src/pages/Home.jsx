@@ -54,7 +54,7 @@ const Home = () => {
       <h1 className='text-5xl text-center m-10'>
         Welcome {user.name}
       </h1>
-      <div className="mb-4">
+      <div className="mb-4 flex flex-col gap-4">
         <input
           type="text"
           placeholder="Task Title"
