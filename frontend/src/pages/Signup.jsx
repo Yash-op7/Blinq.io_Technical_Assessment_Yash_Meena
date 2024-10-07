@@ -22,8 +22,8 @@ const Signup = () => {
       const response = await axios.post('/auth/signup', user, { withCredentials: true });
       console.log(user);
       
-      setUser(user);
-      setIsLoggedIn(true);
+      // setUser(user);
+      // setIsLoggedIn(true);
       navigate('/');
     } catch (error) {
       if (error.response) {
